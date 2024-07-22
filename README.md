@@ -10,5 +10,5 @@ Ce projet est une application de gestion des tickets dédiée pour les assurance
 
 ## Technologies
 
-- **Backend** : Spring Boot
-- **Frontend** : React JS
+- **Backend** : Spring Boot (dossier `gestionTickets`)
+- **Frontend** : React JS (dossier `ticketfrontend`)
