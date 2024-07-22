@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gestion des Solutions</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 mx-auto rounded border p-4 m-4">
+                <h2 class="text-center mb-5">New Solution</h2>
+                <form method="post" th:object="${solutionDto}" th:action="@{/Solutions/CreateSolution}">
+                    <div class="row mb-3">
+                        <label class="col-sm-4 col-form-label">Réponse</label>
+                        <div class="col-sm-8">
+                            <textarea class="form-control" th:field="*{reponse}" rows="3"></textarea>
+                            <p th:if="${#fields.hasErrors('reponse')}" th:errors="*{reponse}" class="text-danger"></p>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label class="col-sm-4 col-form-label">ID Ticket</label>
+                        <div class="col-sm-8">
+                            <select class="form-select" th:field="*{id_ticket}">
+                                <option value="" selected>Select a ticket</option>
+                                <!-- Iterate over tickets and display in dropdown -->
+                                <option th:each="ticket : ${tickets}" th:value="${ticket.id_ticket}" th:text="${ticket.id_ticket}"></option>
+                            </select>
+                            <p th:if="${#fields.hasErrors('id_ticket')}" th:errors="*{id_ticket}" class="text-danger"></p>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-sm-8 offset-sm-4">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <a href="/Solutions" class="btn btn-secondary">Cancel</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
